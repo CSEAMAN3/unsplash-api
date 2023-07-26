@@ -22,7 +22,8 @@ app.get("/", (request, response) => {
 
 // endpoint for /photos
 app.get("/photos", async (request, response) => {
-  const API = `https://api.unsplash.com/search/photos/?client_id=${process.env.ACCESS_KEY}&query=goat`;
+  const subject = request.query.subject;
+  const API = `https://api.unsplash.com/search/photos/?client_id=${process.env.ACCESS_KEY}&query=${subject}`;
   const res = await axios.get(API);
   // console.log(res.data.results[0].urls.regular);
   // response.status(200).json("hello");
